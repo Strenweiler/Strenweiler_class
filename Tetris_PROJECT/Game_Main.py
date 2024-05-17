@@ -2,6 +2,7 @@ import Def_SHAPE_TEMPLATE as DST
 import Primary_Function as PF
 import random, time, pygame, sys
 from pygame.locals import *
+import Tetris_PROJECT.Beginning_end as Beginning_end 
 
 def main():
     """游戏主进程"""
@@ -23,3 +24,11 @@ def main():
     
     #设置窗口标题
     pygame.display.set_caption('俄罗斯方块')
+
+
+
+    while True:
+        Beginning_end.run_game()
+        Beginning_end.ShowTextScreen('Game Over')
+
+
