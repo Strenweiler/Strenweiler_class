@@ -2,7 +2,8 @@ import Def_SHAPE_TEMPLATE as DST
 import Primary_Function as PF
 import random, time, pygame, sys
 from pygame.locals import *
-import Tetris_PROJECT.Beginning_end as Beginning_end 
+import Beginning_end as BE
+
 
 def main():
     """游戏主进程"""
@@ -28,7 +29,10 @@ def main():
 
 
     while True:
-        Beginning_end.run_game()
-        Beginning_end.ShowTextScreen('Game Over')
+        BE.run_game()
+        BE.ShowTextScreen('Game Over')
+
+    
+
 
 
