@@ -12,39 +12,39 @@ def main():
     DISPLAYSURF = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
     BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
     BIGFONT = pygame.font.Font('freesansbold.ttf', 100)
-    pygame.display.set_caption('Tetromino')
+    pygame.display.set_caption('Tetromino_Shenzhen First Polytechnic School 2303')
 
-    showTextScreen('Tetromino', DISPLAYSURF, BIGFONT, BASICFONT, FPSCLOCK)
-    while True:
+    DISPLAYSURF.fill(BGCOLOR)
+    showTextScreen('Tetris',DISPLAYSURF, BIGFONT, BASICFONT, FPSCLOCK) # 显示开始界面
+    while True: # 游戏主循环
         runGame(DISPLAYSURF, FPSCLOCK, BASICFONT, BIGFONT)
-        showTextScreen('Game Over', DISPLAYSURF, BIGFONT, BASICFONT, FPSCLOCK)
+        showTextScreen('Game Over', DISPLAYSURF, BIGFONT, BASICFONT, FPSCLOCK) # 显示游戏结束界面
 
 def runGame(DISPLAYSURF, FPSCLOCK, BASICFONT, BIGFONT):
-    # Initialize the game state
+    """运行游戏主循环"""
     board = getBlankBoard()
     lastMoveDownTime = time.time()
     lastMoveSidewaysTime = time.time()
     lastFallTime = time.time()
-    movingDown = False
-    movingLeft = False
-    movingRight = False
+    movingDown = False  # 是否按住向下键
+    movingLeft = False  # 是否按住向左键
+    movingRight = False  # 是否按住向右键
     score = 0
     level, fallFreq = calculateLevelAndFallFreq(score)
+    fallingPiece = getNewPiece()  # 获取当前下落的方块
+    nextPiece = getNewPiece()  # 获取下一个将要出现的方
 
-    fallingPiece = getNewPiece()
-    nextPiece = getNewPiece()
-
-    while True:
+    while True:# 游戏循环
         if fallingPiece == None:
             fallingPiece = nextPiece
             nextPiece = getNewPiece()
-            lastFallTime = time.time()
+            lastFallTime = time.time() # 重置下落时间
 
             if not isValidPosition(board, fallingPiece):
-                return
+                return # 无法放置新方块，游戏结束
 
         checkForQuit()
-        for event in pygame.event.get():
+        for event in pygame.event.get():# 事件处理
             if event.type == KEYUP:
                 if event.key == K_p:
                     DISPLAYSURF.fill(BGCOLOR)
@@ -119,8 +119,9 @@ def runGame(DISPLAYSURF, FPSCLOCK, BASICFONT, BIGFONT):
         FPSCLOCK.tick(FPS)
 
 def addToBoard(board, piece):
-    """Add a piece to the board."""
+    """将方块添加到游戏板上。"""
     for x in range(TEMPLATEWIDTH):
         for y in range(TEMPLATEHEIGHT):
             if PIECES[piece['shape']][piece['rotation']][y][x] != BLANK:
                 board[x + piece['x']][y + piece['y']] = piece['color']
+
