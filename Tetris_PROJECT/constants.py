@@ -1,6 +1,6 @@
 # constants.py
 
-# FPS and window size
+# FPS和窗口大小
 FPS = 25
 WINDOWWIDTH = 640
 WINDOWHEIGHT = 480
@@ -9,15 +9,15 @@ BOARDWIDTH = 10
 BOARDHEIGHT = 20
 BLANK = '.'
 
-# Time frequencies for movement
+# 移动的时间频率
 MOVESIDEWAYSFREQ = 0.15
 MOVEDOWNFREQ = 0.1
 
-# Margins
+# 边距
 XMARGIN = int((WINDOWWIDTH - BOARDWIDTH * BOXSIZE) / 2)
 TOPMARGIN = WINDOWHEIGHT - (BOARDHEIGHT * BOXSIZE) - 5
 
-# Color definitions
+# 颜色定义
 WHITE    = (255, 255, 255)
 GRAY     = (185, 185, 185)
 BLACK    = (0, 0, 0)
@@ -38,11 +38,11 @@ COLORS = (BLUE, GREEN, RED, YELLOW)
 LIGHTCOLORS = (LIGHTBLUE, LIGHTGREEN, LIGHTRED, LIGHTYELLOW)
 assert len(COLORS) == len(LIGHTCOLORS)
 
-# Template dimensions
+# 模板尺寸
 TEMPLATEWIDTH = 5
 TEMPLATEHEIGHT = 5
 
-# Shape templates
+# 形状模板
 S_SHAPE_TEMPLATE = [['.....',
                      '.....',
                      '..OO.',
